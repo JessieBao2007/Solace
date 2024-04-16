@@ -39,10 +39,10 @@
 
             <ImageView
                 android:id="@+id/logo"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_weight="1"
-                android:src="@drawable/swe_logo" />
+                app:srcCompat="@drawable/solace" />
         </LinearLayout>
 
         <LinearLayout
@@ -57,10 +57,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/josefinsans_bold"
-                android:text="Schiz App NAME"
+                android:text="S.O.L.A.C.E."
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
-                android:textSize="21sp" />
+                android:textSize="64sp" />
 
             <TextView
                 android:id="@+id/clubName2"
@@ -68,10 +68,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/josefinsans_regular"
-                android:text="some kinda tagline"
+                android:text="Schizophrenia Oasis for Lifelong Assistance, Community, and Empowerment"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
-                android:textSize="11sp" />
+                android:textSize="10sp" />
 
         </LinearLayout>
 
@@ -116,6 +116,7 @@
                 android:padding="10dp"
                 android:text="Welcome!"
                 android:textAllCaps="false"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />
         </LinearLayout>

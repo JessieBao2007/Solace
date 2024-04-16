@@ -18,8 +18,6 @@ public class HomeActivity extends AppCompatActivity {
         Button audioBtn = findViewById(R.id.audioBtn);
         Button calmBtn = findViewById(R.id.calmBtn);
         Button calendarBtn = findViewById(R.id.calendarBtn);
-        Button sample1Btn = findViewById(R.id.sample1);
-
 
         cameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,15 +52,6 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // open other view; create intent
                 Intent aboutIntent = new Intent(HomeActivity.this, Calendar.class);
-                // start activity
-                startActivity(aboutIntent);
-            }
-        });
-        sample1Btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // open other view; create intent
-                Intent aboutIntent = new Intent(HomeActivity.this, sample1.class);
                 // start activity
                 startActivity(aboutIntent);
             }

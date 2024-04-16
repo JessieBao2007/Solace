@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#065938"
-    tools:context=".CameraRec">
+    tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -35,65 +35,109 @@
 
                 <ImageView
                     android:id="@+id/logo"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:src="@drawable/swe_logo" />
-
+                    app:srcCompat="@drawable/solace" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/clubName5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:fontFamily="@font/josefinsans_bold"
-                    android:text="Title"
+                    android:text="Camera Recognition"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="21sp" />
             </LinearLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="360dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/light_blue_bg"
-                android:padding="10dp">
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/josefinsans_regular"
-                    android:text="Club Meeting"
-                    android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="140dp"
+            android:gravity="center|center_horizontal"
+            android:orientation="vertical"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout"
+            tools:nestedScrollingEnabled="true">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:fontFamily="@font/josefinsans_regular"
-                    android:text="Join us for important information about upcoming events, including Technovation, UNity Hacks, and award opportunities!"
-                    android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="320sp"
+                android:layout_height="240sp"
+                android:layout_marginTop="10sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/classified"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:fontFamily="@font/josefinsans_regular"
+                android:text="Classified as:"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/josefinsans_bold"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textSize="27sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/confidencesText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30sp"
+                android:fontFamily="@font/josefinsans_regular"
+                android:text="Confidences:"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/confidence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/josefinsans_bold"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="61dp"
+                android:backgroundTint="#013722"
+                android:fontFamily="@font/josefinsans_bold"
+                android:text="Take Picture"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="21sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -114,4 +158,5 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

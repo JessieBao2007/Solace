@@ -35,10 +35,10 @@
 
                 <ImageView
                     android:id="@+id/logo"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:src="@drawable/swe_logo" />
+                    app:srcCompat="@drawable/solace" />
             </LinearLayout>
 
             <LinearLayout
@@ -75,7 +75,7 @@
             app:layout_constraintTop_toTopOf="@+id/linearLayout">
 
             <LinearLayout
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginTop="40dp"
@@ -83,60 +83,60 @@
 
                 <Button
                     android:id="@+id/cameraBtn"
-                    android:layout_width="200dp"
+                    android:layout_width="240dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
                     android:layout_weight="1"
                     android:backgroundTint="#013722"
+                    android:fontFamily="@font/josefinsans_bold"
                     android:padding="15dp"
                     android:text="Camera Recognition"
                     android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
                     app:cornerRadius="20dp" />
 
                 <Button
                     android:id="@+id/audioBtn"
-                    android:layout_width="200dp"
+                    android:layout_width="240dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
                     android:layout_weight="1"
                     android:backgroundTint="#013722"
+                    android:fontFamily="@font/josefinsans_bold"
                     android:padding="15dp"
                     android:text="Auditory Recognition"
                     android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
                     app:cornerRadius="20dp" />
 
                 <Button
                     android:id="@+id/calendarBtn"
-                    android:layout_width="200dp"
+                    android:layout_width="240dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
                     android:backgroundTint="#013722"
+                    android:fontFamily="@font/josefinsans_bold"
                     android:padding="15dp"
                     android:text="Calendar"
                     android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
                     app:cornerRadius="20dp" />
 
                 <Button
                     android:id="@+id/calmBtn"
-                    android:layout_width="200dp"
+                    android:layout_width="240dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
                     android:backgroundTint="#013722"
+                    android:fontFamily="@font/josefinsans_bold"
                     android:padding="15dp"
                     android:text="Calm"
                     android:textAllCaps="false"
-                    app:cornerRadius="20dp" />
-
-                <Button
-                    android:id="@+id/sample1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="#013722"
-                    android:padding="15dp"
-                    android:text="sample1"
-                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
                     app:cornerRadius="20dp" />
 
             </LinearLayout>
