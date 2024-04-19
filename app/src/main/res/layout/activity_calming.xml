@@ -21,11 +21,12 @@
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/layout">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -42,66 +43,779 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/josefinsans_bold"
-                    android:text="Title"
-                    android:textAlignment="center"
-                    android:textColor="#FFFFFF"
-                    android:textSize="21sp" />
-            </LinearLayout>
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="360dp"
+                android:layout_height="410dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/light_blue_bg"
                 android:padding="10dp">
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/josefinsans_regular"
-                    android:text="Club Meeting"
-                    android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+
+                <ScrollView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:fontFamily="@font/josefinsans_regular"
-                    android:text="Join us for important information about upcoming events, including Technovation, UNity Hacks, and award opportunities!"
-                    android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/exercise"
+                            android:visibility="visible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:background="@drawable/rounded"
+                            android:clipToPadding="true"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:padding="16dp"
+                            app:layout_constraintBottom_toTopOf="@id/calming"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/exerciseText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginBottom="15dp"
+                                android:text="If you want to exercise, how and for how long?"
+                                android:textColor="@android:color/white"
+                                android:fontFamily="@font/geotrica_bold"
+                                android:textSize="35sp"
+                                android:gravity="center"
+                                app:layout_constraintBottom_toTopOf="@id/exerciseImage"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/exerciseImage"
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginBottom="15dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/exerciseText"
+                                app:layout_constraintBottom_toTopOf="@id/exerciseButtons"
+                                app:srcCompat="@drawable/superfit" />
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/exerciseButtons"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/exerciseImage"
+                                app:layout_constraintBottom_toTopOf="@id/exercisechoices"
+                                tools:layout_editor_absoluteX="16dp"
+                                tools:layout_editor_absoluteY="451dp">
+
+                                <LinearLayout
+                                    android:id="@+id/runButton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:background="@drawable/button"
+                                    android:clickable="true"
+                                    android:orientation="vertical"
+                                    android:padding="10dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@id/weightButton"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <ImageView
+                                        android:id="@+id/runimg"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="40dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/jogging" />
+
+                                    <TextView
+                                        android:id="@+id/runtxt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="10dp"
+                                        android:text="Aerobics"
+                                        android:textColor="#000080"
+                                        android:textSize="15dp"
+                                        android:fontFamily="@font/geotrica"
+                                        />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/weightButton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:background="@drawable/button"
+                                    android:clickable="true"
+                                    android:orientation="vertical"
+                                    android:padding="10dp"
+                                    android:text="Weight"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@id/yogaButton"
+                                    app:layout_constraintStart_toEndOf="@id/runButton"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <ImageView
+                                        android:id="@+id/weightimg"
+                                        android:layout_width="50dp"
+                                        android:layout_height="40dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/weight" />
+
+                                    <TextView
+                                        android:id="@+id/weighttxt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="10dp"
+                                        android:text="Muscles"
+                                        android:textColor="#000080"
+                                        android:textSize="15dp"
+                                        android:fontFamily="@font/geotrica"
+                                        />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/yogaButton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:background="@drawable/button"
+                                    android:clickable="true"
+                                    android:orientation="vertical"
+                                    android:padding="10dp"
+                                    android:text="Yoga"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@id/weightButton"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <ImageView
+                                        android:id="@+id/yogaimg"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="40dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:src="@drawable/yoga" />
+
+                                    <TextView
+                                        android:id="@+id/yogatxt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginTop="10dp"
+                                        android:text="Flexibility"
+                                        android:textColor="#000080"
+                                        android:textSize="15dp"
+                                        android:fontFamily="@font/geotrica"
+                                        />
+                                </LinearLayout>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/exercisechoices"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginBottom="15dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/exerciseButtons">
+
+                                <Spinner
+                                    android:id="@+id/exerciseSpinner"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/spinner"
+                                    android:scrollbarSize="15dp"
+                                    android:entries="@array/exercisechoices"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@+id/lockButton"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                                <Button
+                                    android:id="@+id/lockButton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:backgroundTint="#7DF9FF"
+                                    android:textColor="#000080"
+                                    android:text="Lock"
+                                    android:visibility="visible"
+                                    app:layout_constraintStart_toEndOf="@id/exerciseSpinner"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/calming"
+                            android:visibility="visible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:background="@drawable/rounded"
+                            android:clipToPadding="true"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:padding="16dp"
+                            app:layout_constraintBottom_toTopOf="@id/clean"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/exercise">
+
+                            <TextView
+                                android:id="@+id/calmingText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginBottom="15dp"
+                                android:text="Lets do some calming breathing exercises"
+                                android:textColor="@android:color/white"
+                                android:fontFamily="@font/geotrica_bold"
+                                android:textSize="35sp"
+                                android:gravity="center"
+                                app:layout_constraintBottom_toTopOf="@id/calmingImage"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/calmingImage"
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginBottom="15dp"
+                                app:layout_constraintBottom_toTopOf="@id/calmingButtons"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/calmingText"
+                                app:srcCompat="@drawable/meditate" />
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/calmingButtons"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/calmingImage"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                tools:layout_editor_absoluteX="16dp"
+                                tools:layout_editor_absoluteY="451dp">
+
+                                <LinearLayout
+                                    android:id="@+id/breatheButton"
+                                    android:layout_width="130dp"
+                                    android:layout_height="130dp"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginEnd="0dp"
+                                    android:background="@drawable/cloud"
+                                    android:clickable="true"
+                                    android:orientation="vertical"
+                                    android:padding="16dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@id/prayerButton"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <TextView
+                                        android:id="@+id/breathetxt"
+                                        android:layout_width="80dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_marginStart="32dp"
+                                        android:layout_marginTop="40dp"
+                                        android:layout_marginEnd="25dp"
+                                        android:fontFamily="@font/geotrica"
+                                        android:text="Close up one nostril and breathe in and out 10 times"
+                                        android:textColor="#000080"
+                                        android:textSize="10dp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/prayerButton"
+                                    android:layout_width="130dp"
+                                    android:layout_height="130dp"
+                                    android:layout_marginStart="0dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:background="@drawable/cloud"
+                                    android:clickable="true"
+                                    android:orientation="vertical"
+                                    android:padding="16dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:text="Weight"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@id/breatheButton"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <TextView
+                                        android:id="@+id/prayertxt"
+                                        android:layout_width="80dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="42dp"
+                                        android:layout_marginEnd="15dp"
+                                        android:text="Take some time to meditate/pray"
+                                        android:textColor="#000080"
+                                        android:textSize="11dp"
+                                        android:fontFamily="@font/geotrica"
+                                        />
+                                </LinearLayout>
+
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clean"
+                            android:visibility="visible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:background="@drawable/rounded"
+                            android:clipToPadding="true"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:padding="16dp"
+                            app:layout_constraintBottom_toTopOf="@id/social"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/calming">
+
+                            <TextView
+                                android:id="@+id/cleanText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginBottom="15dp"
+                                android:text="Lets do some activites to clear your mind!"
+                                android:textColor="@android:color/white"
+                                android:fontFamily="@font/geotrica_bold"
+                                android:textSize="35sp"
+                                android:gravity="center"
+                                app:layout_constraintBottom_toTopOf="@id/cleanImage"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/cleanImage"
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginBottom="15dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/cleanText"
+                                app:layout_constraintBottom_toTopOf="@id/cleanButtons"
+                                app:srcCompat="@drawable/clean" />
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/cleanButtons"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/cleanImage"
+                                app:layout_constraintBottom_toBottomOf="parent">
+
+                                <LinearLayout
+                                    android:id="@+id/cleanlayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_margin="10dp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toTopOf="@id/cleanlayout2">
+
+
+                                    <CheckBox
+                                        android:id="@+id/roomButton"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="5dp"
+                                        android:layout_marginEnd="5dp"
+                                        android:background="@drawable/button"
+                                        android:clickable="true"
+                                        android:orientation="vertical"
+                                        android:padding="10dp"
+                                        android:fontFamily="@font/geotrica"
+                                        android:text="Take some time to clean up your living space"
+                                        android:textColor="#000080"
+                                        android:textSize="11dp" />
+
+                                    <CheckBox
+                                        android:id="@+id/TVButton"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="5dp"
+                                        android:layout_marginEnd="5dp"
+                                        android:background="@drawable/button"
+                                        android:clickable="true"
+                                        android:orientation="vertical"
+                                        android:padding="10dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:text="Relax and watch some TV"
+                                        android:textColor="#000080"
+                                        android:textSize="11dp"
+                                        android:fontFamily="@font/geotrica"
+                                        />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/cleanlayout2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_margin="10dp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/cleanlayout"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    >
+                                    <CheckBox
+                                        android:id="@+id/artButton"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="5dp"
+                                        android:layout_marginEnd="5dp"
+                                        android:background="@drawable/button"
+                                        android:clickable="true"
+                                        android:orientation="vertical"
+                                        android:padding="10dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:text="Work on an artistic project (drawing, scultping, etc)"
+                                        android:textColor="#000080"
+                                        android:textSize="11dp"
+                                        android:fontFamily="@font/geotrica"
+                                        />
+
+                                    <CheckBox
+                                        android:id="@+id/washButton"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="5dp"
+                                        android:layout_marginEnd="5dp"
+                                        android:background="@drawable/button"
+                                        android:clickable="true"
+                                        android:orientation="vertical"
+                                        android:padding="10dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:text="Find time to take a bath, do a skincare routine, etc."
+                                        android:textColor="#000080"
+                                        android:textSize="11dp"
+                                        android:fontFamily="@font/geotrica"
+                                        />
+
+                                </LinearLayout>
+
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/social"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:background="@drawable/rounded"
+                            android:clipToPadding="true"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:padding="16dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/clean">
+                            <TextView
+                                android:id="@+id/socialText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginBottom="15dp"
+                                android:fontFamily="@font/geotrica_bold"
+                                android:gravity="center"
+                                android:text="Stay in touch with those around you"
+                                android:textColor="@android:color/white"
+                                android:textSize="35sp"
+                                app:layout_constraintBottom_toTopOf="@id/socialImage"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/socialImage"
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginBottom="15dp"
+                                app:layout_constraintBottom_toTopOf="@id/socialButtons"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/socialText"
+                                app:srcCompat="@drawable/mail" />
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/socialButtons"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/socialImage">
+
+                                <LinearLayout
+                                    android:id="@+id/sociallayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="horizontal"
+                                    app:layout_constraintBottom_toTopOf="@id/sociallayout2"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+
+                                    <LinearLayout
+                                        android:id="@+id/layout1"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="5dp"
+                                        android:layout_marginEnd="5dp"
+                                        android:background="@drawable/button"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="10dp"
+                                            android:background="@drawable/networking"/>
+
+                                        <CheckBox
+                                            android:id="@+id/social1"
+                                            android:layout_width="90dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginEnd="5dp"
+                                            android:clickable="true"
+                                            android:fontFamily="@font/geotrica"
+                                            android:orientation="vertical"
+                                            android:padding="10dp"
+                                            android:text="Partake in group therapy"
+                                            android:textColor="#000080"
+                                            android:textSize="11dp" />
+                                    </LinearLayout>
+
+
+
+                                    <LinearLayout
+                                        android:id="@+id/layout2"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="5dp"
+                                        android:layout_marginEnd="5dp"
+                                        android:background="@drawable/button"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="10dp"
+                                            android:background="@drawable/phonecall"/>
+
+                                        <CheckBox
+                                            android:id="@+id/social2"
+                                            android:layout_width="90dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginEnd="5dp"
+                                            android:clickable="true"
+                                            android:fontFamily="@font/geotrica"
+                                            android:orientation="vertical"
+                                            android:padding="10dp"
+                                            android:text="Spend some time with close ones"
+                                            android:textColor="#000080"
+                                            android:textSize="11dp" />
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/sociallayout2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="horizontal"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/sociallayout">
+
+
+
+                                    <LinearLayout
+                                        android:id="@+id/layout3"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="5dp"
+                                        android:layout_marginEnd="5dp"
+                                        android:background="@drawable/button"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="10dp"
+                                            android:background="@drawable/dog"/>
+
+                                        <CheckBox
+                                            android:id="@+id/social3"
+                                            android:layout_width="90dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginEnd="5dp"
+                                            android:clickable="true"
+                                            android:fontFamily="@font/geotrica"
+                                            android:orientation="vertical"
+                                            android:padding="10dp"
+                                            android:text="Cuddle with an emotional support animal"
+                                            android:textColor="#000080"
+                                            android:textSize="11dp" />
+                                    </LinearLayout>
+
+
+                                    <LinearLayout
+                                        android:id="@+id/layout4"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="5dp"
+                                        android:layout_marginEnd="5dp"
+                                        android:background="@drawable/button"
+                                        android:orientation="vertical">
+
+                                        <ImageView
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginTop="10dp"
+                                            android:background="@drawable/chat"/>
+
+                                        <CheckBox
+                                            android:id="@+id/social4"
+                                            android:layout_width="90dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="5dp"
+                                            android:layout_marginEnd="5dp"
+                                            android:clickable="true"
+                                            android:fontFamily="@font/geotrica"
+                                            android:orientation="vertical"
+                                            android:padding="10dp"
+                                            android:text="Other social activites"
+                                            android:textColor="#000080"
+                                            android:textSize="11dp" />
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <Button
+                            android:id="@+id/cont"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/button"
+                            android:layout_gravity="center"
+                            android:text="Continue"
+                            android:fontFamily="@font/geotrica_bold"
+                            android:textSize="50dp"/>
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="20dp"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
