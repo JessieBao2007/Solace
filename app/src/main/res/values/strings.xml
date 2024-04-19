@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Technovation24</string>
+    <string name="app_name">Solace</string>
     <string-array name="exercisechoices">
         <item>less than 10 minutes</item>
         <item>10 to 19 minutes</item>
