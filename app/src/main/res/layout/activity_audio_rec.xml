@@ -106,11 +106,27 @@
                     android:textColor="@color/white"
                     android:textSize="21sp"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/jingle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textOutput" />
+
+                <Button
+                    android:id="@+id/jingle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Play Jingle"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="#013722"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="21sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.878" />
+                    app:layout_constraintTop_toBottomOf="@id/checkButton"
+                    />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

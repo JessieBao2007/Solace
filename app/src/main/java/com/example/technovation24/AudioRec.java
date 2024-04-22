@@ -3,6 +3,7 @@ package com.example.technovation24;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,12 +23,19 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class AudioRec extends AppCompatActivity {
 
+    private MediaPlayer songPlayer;
+
     TextView output;
+    Button jingle;
+    boolean player = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_audio_rec);
+
+        jingle = findViewById(R.id.jingle);
+        songPlayer = MediaPlayer.create(this, R.raw.calming);
 
         ImageView homeBtn = findViewById(R.id.homeBtn);
         output = findViewById(R.id.textOutput);
@@ -39,6 +47,20 @@ public class AudioRec extends AppCompatActivity {
                 Intent aboutIntent = new Intent(AudioRec.this, HomeActivity.class);
                 // start activity
                 startActivity(aboutIntent);
+            }
+        });
+
+
+        jingle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!player){
+                    songPlayer.start();
+                    player = true;
+                }else{
+                    songPlayer.pause();
+                    player = false;
+                }
             }
         });
     }
@@ -56,6 +78,14 @@ public class AudioRec extends AppCompatActivity {
 
         if(requestCode == 100 && resultCode == RESULT_OK){
             output.setText(data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0));
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
         }
     }
 
