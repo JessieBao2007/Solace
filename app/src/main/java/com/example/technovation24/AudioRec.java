@@ -56,9 +56,11 @@ public class AudioRec extends AppCompatActivity {
             public void onClick(View v) {
                 if(!player){
                     songPlayer.start();
+                    jingle.setText("Stop Jingle");
                     player = true;
                 }else{
                     songPlayer.pause();
+                    jingle.setText("Play Jingle");
                     player = false;
                 }
             }
@@ -84,8 +86,8 @@ public class AudioRec extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mediaPlayer != null) {
-            mediaPlayer.release();
+        if (songPlayer != null) {
+            songPlayer.release();
         }
     }
 

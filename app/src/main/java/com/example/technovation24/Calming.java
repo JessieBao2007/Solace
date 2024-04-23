@@ -114,6 +114,7 @@ public class Calming extends AppCompatActivity {
                     exercisePress = true;
                     athleticPoints += 40;
                     funPoints+=20;
+                    run.setClickable(false);
                     run.setBackgroundResource(R.drawable.white);
                 }
             }
@@ -126,6 +127,7 @@ public class Calming extends AppCompatActivity {
                     exercisePress = true;
                     athleticPoints += 40;
                     funPoints+=20;
+                    weight.setClickable(false);
                     weight.setBackgroundResource(R.drawable.white);
                 }
             }
@@ -139,6 +141,7 @@ public class Calming extends AppCompatActivity {
                     athleticPoints += 40;
                     calmPoints+=20;
                     funPoints+=20;
+                    yoga.setClickable(false);
                     yoga.setBackgroundResource(R.drawable.white);
                 }
             }
@@ -275,29 +278,31 @@ public class Calming extends AppCompatActivity {
         cont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // open other view; create intent
+                int highestPoints = getStatus(); // Get the highest points using the getStatus() method
                 Intent aboutIntent = new Intent(Calming.this, Report.class);
-                // start activity
+                aboutIntent.putExtra("highestPoints", highestPoints); // Pass the highest points to the Report activity
                 startActivity(aboutIntent);
             }
         });
+
     }
 
 
-    public int getStatus(){
-        if(athleticPoints>= calmPoints && athleticPoints >= funPoints && athleticPoints >=socialPoints){
-            return 0;
-        }else if(calmPoints>= athleticPoints && calmPoints >= funPoints && calmPoints >=socialPoints){
+    public int getStatus() {
+        int maxPoints = Math.max(Math.max(athleticPoints, calmPoints), Math.max(funPoints, socialPoints));
+
+        if (athleticPoints == maxPoints && athleticPoints > 0) {
+            return 5;
+        } else if (calmPoints == maxPoints && calmPoints > 0) {
             return 1;
-        }else if(funPoints>= athleticPoints && funPoints >= calmPoints && funPoints >=socialPoints){
+        } else if (funPoints == maxPoints && funPoints > 0) {
             return 2;
-        }else if(socialPoints>= athleticPoints && socialPoints >= calmPoints && socialPoints >=funPoints){
+        } else if (socialPoints == maxPoints && socialPoints > 0) {
             return 3;
-        }else if(athleticPoints==0 && calmPoints==0 && funPoints==0 && socialPoints==0 ){
-            return 4;
-        } else{
+        } else {
             return 4;
         }
     }
+
 
 }

@@ -2,6 +2,7 @@ package com.example.technovation24;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -27,7 +28,7 @@ public class Report extends AppCompatActivity {
     int month;
     int dayDate;
 
-    float moodRate;
+    float normalizedRating=10;
 
     TextView text;
     LinearLayout container, journal;
@@ -37,11 +38,12 @@ public class Report extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
 
+
+        Intent intent = getIntent();
+        points = intent.getIntExtra("highestPoints", 0);
+
+
         container = findViewById(R.id.container);
-
-        Calming calmingInstance = new Calming();
-
-        points = calmingInstance.getStatus();
 
 
         //date stuff
@@ -102,23 +104,37 @@ public class Report extends AppCompatActivity {
             }
         });
 
-        submit=findViewById(R.id.submit);
+        submit = findViewById(R.id.submit);
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayText();
-                moodRate = 5 - rating.getRating();
+                float maxRating = rating.getNumStars(); // Get the maximum rating value
+                float actualRating = rating.getRating(); // Get the actual rating given by the user
+                normalizedRating = (actualRating / maxRating) * 10; // Normalize the rating value between 0 and 10
+
+                // Set points based on the normalized rating
+                if (normalizedRating >= 0 && normalizedRating < 3.33) {
+                    normalizedRating = 1; // Set points to 1 for bad status
+                } else if (normalizedRating >= 3.33 && normalizedRating < 6.66) {
+                    normalizedRating = 4; // Set points to 2 for mid status
+                } else {
+                    normalizedRating = 11; // Set points to 5 for good status
+                }
+
+                displayText(); // Display the text with the updated points value
+
+                // Clear input fields and reset button backgrounds
                 moodText.setText("");
                 symptomText.setText("");
                 activeText.setText("");
                 dayText.setText("");
-
                 moodBtn.setBackgroundResource(R.drawable.button2);
                 sympBtn.setBackgroundResource(R.drawable.button2);
                 activeBtn.setBackgroundResource(R.drawable.button2);
                 dayBtn.setBackgroundResource(R.drawable.button2);
 
-
+                // Reset mood, active, day, and symptoms variables
                 mood = "";
                 active = "";
                 day = "";
@@ -127,42 +143,51 @@ public class Report extends AppCompatActivity {
         });
 
 
+
+
     }
 
 
 
     public void displayText() {
-        // Create a new LinearLayout to hold the images and text
-        LinearLayout itemLayout = new LinearLayout(Report.this);
-        itemLayout.setOrientation(LinearLayout.HORIZONTAL);
+        // Create a new vertical LinearLayout to hold the text information
+        LinearLayout verticalLayout = new LinearLayout(Report.this);
+        verticalLayout.setOrientation(LinearLayout.VERTICAL);
 
         // Add date TextView
         TextView dateTextView = new TextView(Report.this);
         dateTextView.setText("Date: " + year + "/" + month + "/" + dayDate);
         dateTextView.setTextSize(18);
         dateTextView.setTextColor(Color.WHITE); // Change text color to white
-        itemLayout.addView(dateTextView);
+        verticalLayout.addView(dateTextView);
+
+        // Create a new horizontal LinearLayout to hold the images
+        LinearLayout horizontalLayout = new LinearLayout(Report.this);
+        horizontalLayout.setOrientation(LinearLayout.HORIZONTAL);
 
         // Create the first ImageView for mood and set its properties
         ImageView moodImageView = new ImageView(Report.this);
-        if(moodRate < 2.0){
+
+
+        if (normalizedRating < 3.33) {
             moodImageView.setImageResource(R.drawable.bad);
-        } else if(moodRate >= 2.0 && moodRate <= 4.0){
+        } else if (normalizedRating >= 3.33 && normalizedRating < 6.66) {
             moodImageView.setImageResource(R.drawable.mid);
-        } else {
+        } else if (normalizedRating >= 6.66){
             moodImageView.setImageResource(R.drawable.good);
         }
+
         LinearLayout.LayoutParams moodLayoutParams = new LinearLayout.LayoutParams(
                 200, // Set width to 200dp
                 200 // Set height to 200dp
         );
         moodLayoutParams.setMargins(10, 0, 0, 0); // Adjust margins as needed
         moodImageView.setLayoutParams(moodLayoutParams);
-        itemLayout.addView(moodImageView);
+        horizontalLayout.addView(moodImageView);
 
         // Create the second ImageView for mood status and set its properties
         ImageView statusImageView = new ImageView(Report.this);
-        if(points == 0){
+        if(points == 5){
             statusImageView.setImageResource(R.drawable.buff);
         } else if(points == 1){
             statusImageView.setImageResource(R.drawable.calmest);
@@ -179,12 +204,47 @@ public class Report extends AppCompatActivity {
         );
         statusLayoutParams.setMargins(10, 0, 0, 0); // Adjust margins as needed
         statusImageView.setLayoutParams(statusLayoutParams);
-        itemLayout.addView(statusImageView);
+        horizontalLayout.addView(statusImageView);
 
-        // Add the new LinearLayout to the container LinearLayout
-        container.addView(itemLayout);
+        // Add the horizontal LinearLayout with images to the main vertical LinearLayout
+        verticalLayout.addView(horizontalLayout);
 
 
+
+        // Add the text under the images
+        String text = "Mood: " + mood + "\n" + "Symptoms: "+ symptoms + "\n"+"Day: "+ active + "\n" +"Highlights: " + day;
+        TextView textView = new TextView(Report.this);
+        textView.setText(text);
+        textView.setTextSize(16);
+        textView.setTextColor(Color.WHITE); // Change text color to white
+        LinearLayout.LayoutParams textLayoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, // Set width to MATCH_PARENT to fill the parent
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        textLayoutParams.setMargins(0, 10, 0, 0); // Adjust margins as needed
+        textView.setLayoutParams(textLayoutParams);
+        verticalLayout.addView(textView);
+
+        // Add the new vertical LinearLayout to the container LinearLayout
+        container.addView(verticalLayout);
+    }
+
+
+
+    public int getStatus(int athleticPoints, int calmPoints, int socialPoints, int funPoints) {
+        int maxPoints = Math.max(Math.max(athleticPoints, calmPoints), Math.max(funPoints, socialPoints));
+
+        if (athleticPoints == maxPoints && athleticPoints > 0) {
+            return 5;
+        } else if (calmPoints == maxPoints && calmPoints > 0) {
+            return 1;
+        } else if (funPoints == maxPoints && funPoints > 0) {
+            return 2;
+        } else if (socialPoints == maxPoints && socialPoints > 0) {
+            return 3;
+        } else {
+            return 4;
+        }
     }
 
 

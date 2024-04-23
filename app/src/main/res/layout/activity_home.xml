@@ -53,10 +53,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/josefinsans_bold"
-                    android:text="Westview SWENext x WiSTEM"
+                    android:text="S.O.L.A.C.E"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
-                    android:textSize="21sp" />
+                    android:textSize="28sp" />
             </LinearLayout>
 
         </LinearLayout>
